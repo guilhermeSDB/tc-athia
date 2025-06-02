@@ -12,7 +12,10 @@ composer install --no-interaction
 echo "📦 Rodando migrations via Phinx..."
 composer migrate || echo "⚠️ Erro ao rodar migrations"
 
-echo "📄 Geraando documentacao com Swagger..."
+echo "🌱 Rodando seeds via Phinx..."
+composer seed || echo "⚠️ Erro ao rodar seeds"
+
+echo "📄 Gerando documentacao com Swagger..."
 composer generate-swagger || echo "⚠️ Erro ao gerar Swagger"
 
 echo "🔥 Iniciando servidor PHP embutido..."

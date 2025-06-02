@@ -5,8 +5,6 @@ node_modules/
 # PHP
 /vendor/
 composer.lock
-.env
-.env.*
 
 # Docker
 *.log
@@ -30,7 +28,6 @@ phpunit.xml
 
 # Outros
 /web/.env*
-/api/.env*
 /api/public/openapi.json
 
 # Logs
@@ -42,5 +39,3 @@ phpunit.xml
 
 # Arquivos de build do frontend
 /web/out/
-/web/dist/
-/web/build/ 

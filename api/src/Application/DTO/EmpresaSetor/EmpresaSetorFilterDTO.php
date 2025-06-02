@@ -4,6 +4,11 @@ namespace App\Application\DTO\EmpresaSetor;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
+#[OAT\Schema(
+	schema: 'EmpresaSetorFilterDTO',
+	title: 'EmpresaSetorFilterDTO',
+	description: 'DTO para receber o id de Setor e Empresa'
+)]
 class EmpresaSetorFilterDTO
 {
 	#[Assert\Type("int")]

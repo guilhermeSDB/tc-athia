@@ -6,9 +6,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 use OpenApi\Attributes as OAT;
 
 #[OAT\Schema(
-	schema: 'CreateEmpresaDTO',
-	title: 'CreateEmpresaDTO',
-	description: 'DTO para criação de empresa'
+	schema: 'CountEmpresaDTO',
+	title: 'CountEmpresaDTO',
+	description: 'DTO para contagem de empresa'
 )]
 class CountEmpresaDTO
 {

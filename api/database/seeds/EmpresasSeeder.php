@@ -18,11 +18,11 @@ final class EmpresasSeeder extends AbstractSeed
 				'nome_fantasia'  => $faker->companySuffix,
 				'cnpj'           => $faker->cnpj(false), // false: sem máscara
 				'created_at'     => date('Y-m-d H:i:s'),
-				'updated_at'     => null,
+				'updated_at'     => date('Y-m-d H:i:s'),
 				'deleted_at'     => null,
 			];
 		}
 
-		$this->table('empresas')->insert($data)->saveData();
+		$this->table('empresa')->insert($data)->saveData();
 	}
 }

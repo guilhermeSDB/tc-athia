@@ -1,41 +1,39 @@
-# Node
-node_modules/
-.next/
+.vscode
+/api/.vscode
+/web/.vscode
 
-# PHP
-/vendor/
-composer.lock
+# Ignorar arquivos de ambiente
+.env
+.env.local
 
-# Docker
+# Ignorar logs
 *.log
-docker-compose.override.yml
 
-# IDEs e SO
-.idea/
-.vscode/
-.DS_Store
-Thumbs.db
-
-# Cache e build
+# Cache geral e arquivos temporários
 *.cache
-*.tmp
 *.swp
-*.swo
+*.tmp
 
-# Testes
-coverage/
-phpunit.xml
+# Pastas de dependências
+web/node_modules/
+api/vendor/
 
-# Outros
-/web/.env*
-/api/public/openapi.json
+# Pastas de build e cobertura
+web/.next/
+web/dist/
+web/coverage/
+api/coverage/
+api/.phpunit.result.cache
+api/public/openapi.json
 
-# Logs
-*.log
+# Cache do TypeScript / ferramentas
+web/.turbo/
+web/.tsbuildinfo
+web/.vite/
 
-# Arquivos de exportação temporários
-*.csv
-*.xlsx
+# Docker (mas mantém docker-compose.yml no versionamento)
+.dockerignore
 
-# Arquivos de build do frontend
-/web/out/
+# Lockfiles (opcional ignorar – recomendado manter)
+api/composer.lock
+web/package-lock.json

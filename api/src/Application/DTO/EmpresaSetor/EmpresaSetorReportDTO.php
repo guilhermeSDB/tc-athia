@@ -6,6 +6,11 @@ use OpenApi\Attributes as OAT;
 use App\Application\DTO\Empresa\EmpresaResponseDTO;
 use App\Application\DTO\Setor\SetorResponseDTO;
 
+#[OAT\Schema(
+	schema: 'EmpresaSetorReportDTO',
+	title: 'EmpresaSetorReportDTO',
+	description: 'DTO para trazer Empresa Setor'
+)]
 class EmpresaSetorReportDTO
 {
 	#[OAT\Property(type: 'integer', format: 'int64')]

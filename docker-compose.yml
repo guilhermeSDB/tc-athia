@@ -1,0 +1,44 @@
+services:
+  postgres:
+    image: 'bitnami/postgresql:latest'
+    container_name: app-athia-db
+    restart: always
+    env_file:
+      - ./api/.env.docker
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: app-athia-api
+    restart: always
+    depends_on:
+      - postgres
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./api:/var/www/html
+    environment:
+      - DOCKER=true
+    env_file:
+      - ./api/.env.docker
+
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    container_name: app-athia-web
+    restart: always
+    depends_on:
+      - api
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8000
+
+volumes:
+  postgres_data:

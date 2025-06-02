@@ -1,0 +1,46 @@
+# Node
+node_modules/
+.next/
+
+# PHP
+/vendor/
+composer.lock
+.env
+.env.*
+
+# Docker
+*.log
+docker-compose.override.yml
+
+# IDEs e SO
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Cache e build
+*.cache
+*.tmp
+*.swp
+*.swo
+
+# Testes
+coverage/
+phpunit.xml
+
+# Outros
+/web/.env*
+/api/.env*
+/api/public/openapi.json
+
+# Logs
+*.log
+
+# Arquivos de exportação temporários
+*.csv
+*.xlsx
+
+# Arquivos de build do frontend
+/web/out/
+/web/dist/
+/web/build/ 

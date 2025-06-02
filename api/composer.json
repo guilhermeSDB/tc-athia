@@ -1,0 +1,39 @@
+{
+	"name": "guilherme/api",
+	"version": "1.0.0",
+	"description": "Slim + Eloquent + Clean Architecture",
+	"authors": [
+		{
+			"name": "guilhermeSDB",
+			"email": "guilhermescarmagnani@outlook.com"
+		}
+	],
+	"require": {
+		"slim/slim": "^4.14",
+		"slim/psr7": "^1.7",
+		"php-di/php-di": "^7.0",
+		"illuminate/database": "^12.16",
+		"symfony/validator": "^7.3",
+		"illuminate/events": "^12.16",
+		"zircote/swagger-php": "^5.1",
+		"fakerphp/faker": "^1.24",
+		"vlucas/phpdotenv": "^5.6"
+	},
+	"autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+	"require-dev": {
+		"robmorgan/phinx": "^0.16.9"
+	},
+	"scripts": {
+		"migrate": "php vendor/bin/phinx migrate",
+		"rollback": "vendor/bin/phinx rollback",
+		"make-migration": "php vendor/bin/phinx create",
+		"seed": "vendor/bin/phinx seed:run",
+		"generate-swagger": "php vendor/bin/openapi src/Infrastructure/Docs/Swagger src/Interface/Http/Controllers src/Application/DTO -o public/openapi.json",
+		"pre-dev": "composer run-script generate-swagger",
+		"dev": "php -S localhost:8000 -t public"
+	}
+}

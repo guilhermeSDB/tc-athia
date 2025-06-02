@@ -12,7 +12,7 @@ class EmpresaSetorReportDTO
 	public int $id;
 
 	#[OAT\Property(example: "Empresa XPTO")]
-	public string $nome_fantasia;
+	public ?string $nome_fantasia = null;
 
 	#[OAT\Property(example: 1)]
 	public int $empresa_id;
@@ -35,6 +35,7 @@ class EmpresaSetorReportDTO
 		$dto = new self();
 		$dto->empresa_id = $empresa->id;
 		$dto->razao_social = $empresa->razao_social;
+		$dto->nome_fantasia = $empresa->nome_fantasia ?? null;
 		$dto->cnpj = $empresa->cnpj;
 		$dto->setores = array_map(
 			fn($setor) => SetorResponseDTO::fromEntity($setor),
@@ -50,7 +51,7 @@ class EmpresaSetorReportDTO
 		$dto->id = $model->id;
 		$dto->cnpj = $model->cnpj;
 		$dto->razao_social = $model->razao_social;
-		$dto->nome_fantasia = $model->nome_fantasia;
+		$dto->nome_fantasia = $model->nome_fantasia ?? null;
 
 		$dto->setores = $model->setores->map(fn($setor) => [
 			'id' => $setor->id,

@@ -29,11 +29,9 @@
 	},
 	"scripts": {
 		"migrate": "php vendor/bin/phinx migrate",
-		"rollback": "vendor/bin/phinx rollback",
+		"rollback": "php vendor/bin/phinx rollback",
+		"seed": "php vendor/bin/phinx seed:run",
 		"make-migration": "php vendor/bin/phinx create",
-		"seed": "vendor/bin/phinx seed:run",
-		"generate-swagger": "php vendor/bin/openapi src/Infrastructure/Docs/Swagger src/Interface/Http/Controllers src/Application/DTO -o public/openapi.json",
-		"pre-dev": "composer run-script generate-swagger",
-		"dev": "php -S localhost:8000 -t public"
+		"generate-swagger": "php vendor/bin/openapi src/Infrastructure/Docs/Swagger src/Interface/Http/Controllers src/Application/DTO -o public/openapi.json"
 	}
 }

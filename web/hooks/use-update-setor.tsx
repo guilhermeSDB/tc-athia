@@ -16,7 +16,8 @@ export function useUpdateSetor() {
 			return data;
 		},
 		onSuccess: (_, variables) => {
-			queryClient.invalidateQueries({ queryKey: ["setores", "setores-count"] });
+			queryClient.invalidateQueries({ queryKey: ["setores"] });
+			queryClient.invalidateQueries({ queryKey: ["setores-count"] });
 			queryClient.invalidateQueries({
 				queryKey: ["setor", variables.id],
 			});

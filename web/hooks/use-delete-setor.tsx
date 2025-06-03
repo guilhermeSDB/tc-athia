@@ -13,7 +13,8 @@ export function useDeleteSetor() {
 			await api.delete(`/setores/${id}`);
 		},
 		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ["setores", "setores-count"] });
+			queryClient.invalidateQueries({ queryKey: ["setores"] });
+			queryClient.invalidateQueries({ queryKey: ["setores-count"] });
 		},
 	});
 }

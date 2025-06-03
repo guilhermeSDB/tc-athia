@@ -15,7 +15,8 @@ export function useCreateSetor() {
 			return data;
 		},
 		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ["setores", "setores-count"] });
+			queryClient.invalidateQueries({ queryKey: ["setores"] });
+			queryClient.invalidateQueries({ queryKey: ["setores-count"] });
 		},
 	});
 }

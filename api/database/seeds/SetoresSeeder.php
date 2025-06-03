@@ -11,31 +11,34 @@ final class SetoresSeeder extends AbstractSeed
 	{
 		$faker = FakerFactory::create('pt_BR');
 
-		 $listaDeSetores = [
-            'Agricultura',
-            'Alimentos e Bebidas',
-            'Comércio Atacadista',
-            'Comércio Varejista',
-            'Construção Civil',
-            'Educação',
-            'Energia',
-            'Financeiro',
-            'Indústria Automobilística',
-            'Indústria Farmacêutica',
-            'Logística',
-            'Saúde',
-            'Tecnologia da Informação',
-            'Telecomunicações',
-            'Turismo e Hotelaria',
-        ];
+		$listaDeSetores = [
+			'Agricultura',
+			'Alimentos e Bebidas',
+			'Comércio Atacadista',
+			'Comércio Varejista',
+			'Construção Civil',
+			'Educação',
+			'Energia',
+			'Financeiro',
+			'Indústria Automobilística',
+			'Indústria Farmacêutica',
+			'Logística',
+			'Saúde',
+			'Tecnologia da Informação',
+			'Telecomunicações',
+			'Turismo e Hotelaria',
+		];
+
+		shuffle($listaDeSetores);
+		$setoresSelecionados = array_slice($listaDeSetores, 0, 10);
 
 		$data = [];
-		for ($i = 0; $i < 10; $i++) {
+		foreach ($setoresSelecionados as $descricao) {
 			$data[] = [
-				'descricao'   	 => $faker->randomElement($listaDeSetores),
-				'created_at'     => date('Y-m-d H:i:s'),
-				'updated_at'     => date('Y-m-d H:i:s'),
-				'deleted_at'     => null,
+				'descricao'   => $descricao,
+				'created_at'  => date('Y-m-d H:i:s'),
+				'updated_at'  => date('Y-m-d H:i:s'),
+				'deleted_at'  => null,
 			];
 		}
 

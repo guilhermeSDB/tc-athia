@@ -13,7 +13,8 @@ export function useDeleteEmpresa() {
 			await api.delete(`/empresas/${id}`);
 		},
 		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ["empresas","empresas-count"] });
+			queryClient.invalidateQueries({ queryKey: ["empresas"] });
+			queryClient.invalidateQueries({ queryKey: ["empresas-count"] });
 		},
 	});
 }

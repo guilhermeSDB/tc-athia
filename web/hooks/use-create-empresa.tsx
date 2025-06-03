@@ -17,7 +17,8 @@ export function useCreateEmpresa() {
 			return data.data as Empresa;
 		},
 		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ["empresas","empresas-count"] });
+			queryClient.invalidateQueries({ queryKey: ["empresas"] });
+			queryClient.invalidateQueries({ queryKey: ["empresas-count"] });
 		},
 	});
 }

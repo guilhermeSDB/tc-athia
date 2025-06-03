@@ -18,7 +18,7 @@ export function useUpdateEmpresa() {
 			return data.data as Empresa;
 		},
 		onSuccess: (_, variables) => {
-			queryClient.invalidateQueries({ queryKey: ["empresas","empresas-count"] });
+			queryClient.invalidateQueries({ queryKey: ["empresas"] });
 			queryClient.invalidateQueries({
 				queryKey: ["empresa", variables.id],
 			});

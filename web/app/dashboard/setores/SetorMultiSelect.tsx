@@ -16,6 +16,7 @@ import {
 	PopoverTrigger,
 } from "@/components/ui/popover";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { motion } from "framer-motion";
 import { ChevronsUpDown } from "lucide-react";
 import React from "react";
 
@@ -52,6 +53,14 @@ export function SetorMultiSelect({
 		.map((opt) => opt.descricao)
 		.join(", ");
 
+	const selectedCount = value.length;
+	const displayText =
+		selectedCount === 0
+			? placeholder
+			: selectedCount <= 3
+			? selectedLabels
+			: `${selectedCount} selecionados`;
+	
 	return (
 		<Popover open={open} onOpenChange={setOpen}>
 			<PopoverTrigger asChild>
@@ -60,29 +69,36 @@ export function SetorMultiSelect({
 					role="combobox"
 					className="w-full justify-between"
 				>
-					{selectedLabels || placeholder}
+					{displayText || placeholder}
 					<ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
 				</Button>
 			</PopoverTrigger>
-			<PopoverContent className="w-full min-w-[300px] p-0">
-				<Command>
-					<CommandInput placeholder="Buscar setor..." />
-					<CommandEmpty>Nenhum setor encontrado.</CommandEmpty>
-					<CommandGroup>
-						<ScrollArea className="max-h-48">
-							{options.map((option) => (
-								<CommandItem
-									key={option.id}
-									onSelect={() => toggleOption(option.id)}
-									className="flex items-center justify-between"
-								>
-									<span>{option.descricao}</span>
-									<Checkbox checked={value.includes(option.id)} />
-								</CommandItem>
-							))}
+			<PopoverContent className="min-w-[300px] p-0 max-h-[300px] overflow-y-auto">
+				<motion.div
+					initial={{ opacity: 0, y: -10 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.2 }}
+				>
+					<Command>
+						<CommandInput placeholder="Buscar setor..." />
+						<CommandEmpty>Nenhum setor encontrado.</CommandEmpty>
+
+						<ScrollArea className="max-h-[calc(100vh-200px)]">
+							<CommandGroup heading="Setores disponíveis">
+								{options.map((option) => (
+									<CommandItem
+										key={option.id}
+										onSelect={() => toggleOption(option.id)}
+										className="flex items-center justify-between"
+									>
+										<span>{option.descricao}</span>
+										<Checkbox checked={value.includes(option.id)} />
+									</CommandItem>
+								))}
+							</CommandGroup>
 						</ScrollArea>
-					</CommandGroup>
-				</Command>
+					</Command>
+				</motion.div>
 			</PopoverContent>
 		</Popover>
 	);

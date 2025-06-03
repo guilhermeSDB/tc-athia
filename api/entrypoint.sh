@@ -13,6 +13,8 @@ echo "📦 Rodando migrations via Phinx..."
 composer migrate || echo "⚠️ Erro ao rodar migrations"
 
 echo "🌱 Rodando seeds via Phinx..."
+php vendor/bin/phinx seed:run -s SetoresSeeder
+php vendor/bin/phinx seed:run -s EmpresasSeeder
 composer seed || echo "⚠️ Erro ao rodar seeds"
 
 echo "📄 Gerando documentacao com Swagger..."

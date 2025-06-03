@@ -9,17 +9,14 @@ import { format } from "date-fns";
 import { DataTable } from "./data-table";
 import { DeleteEmpresaDialog } from "./delete-empresa-dialog";
 import { Button } from "./ui/button";
+import { EmpresasTableSkeleton } from "./empresas-table-skeleton";
 
 export function EmpresasTable() {
 	const { data, isLoading, error, refetch } = useEmpresas();
 	const deleteMutation = useDeleteEmpresa();
 
 	if (isLoading) {
-		return (
-			<div className="flex justify-center py-8">
-				<span>Carregando...</span>
-			</div>
-		);
+		return <EmpresasTableSkeleton />;
 	}
 
 	if (error) {

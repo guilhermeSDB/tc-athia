@@ -7,6 +7,7 @@ import { useSetores } from "@/hooks/use-setores";
 import { format } from "date-fns";
 import { DataTable } from "./data-table";
 import { DeleteSetorDialog } from "./delete-setor-dialog";
+import SetoresTableSkeleton from "./setores-table-skeleton";
 import { Button } from "./ui/button";
 
 export function SetoresTable() {
@@ -14,13 +15,9 @@ export function SetoresTable() {
 	const deleteMutation = useDeleteSetor();
 
 	if (isLoading) {
-		return (
-			<div className="flex justify-center py-8">
-				<span>Carregando...</span>
-			</div>
-		);
+		return <SetoresTableSkeleton />;
 	}
-
+	
 	if (error) {
 		return (
 			<Alert variant="destructive" className="my-4">
